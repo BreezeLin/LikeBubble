@@ -27,4 +27,9 @@ proguard/
 *.ipr
 *.iws
 .idea/
+build/
+*.build/
+.gradle/
+.idea/
+captures/
 
