@@ -13,11 +13,29 @@ import android.graphics.Bitmap;
  */
 public class Bubble {
 
+    /**
+     * 当前泡泡的图片
+     */
     private Bitmap bubbleBitmap;
+    /**
+     * 泡泡的下一个坐标x
+     */
     private int x;
+    /**
+     * 泡泡的下一个坐标y
+     */
     private int y;
+    /**
+     * 泡泡的下一个偏移值
+     */
     private int rotation;
+    /**
+     * 泡泡的x轴缩放
+     */
     private int scaleX;
+    /**
+     * 泡泡的y轴缩放
+     */
     private int scaleY;
 
     public Bubble(Bitmap bubbleBitmap) {

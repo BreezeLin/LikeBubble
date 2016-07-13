@@ -6,18 +6,18 @@ import android.view.Gravity;
 import android.view.View;
 
 import com.breezelin.likebubble.utils.ScreenUtil;
-import com.breezelin.likebubble.widgets.BubbleLikeView;
+import com.breezelin.likebubble.widgets.BubbleLikeAView;
 
 public class VGModeActivity extends AppCompatActivity {
 
-    private BubbleLikeView likeView;
+    private BubbleLikeAView likeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vgmode);
 
-        likeView = (BubbleLikeView) findViewById(R.id.like_view);
+        likeView = (BubbleLikeAView) findViewById(R.id.like_view);
         if (likeView != null) {
             likeView.setBubbleGravity(Gravity.END, 0);
             likeView.setBubbleFlyPadding(0, ScreenUtil.dip2px(25, this));

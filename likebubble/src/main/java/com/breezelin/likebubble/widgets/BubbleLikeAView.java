@@ -27,9 +27,9 @@ import java.util.LinkedList;
 import java.util.Random;
 
 /**
- * 点赞冒泡控件
+ * 以ViewGroup和ObjectAnimation为基础的点赞冒泡控件
  */
-public class BubbleLikeView extends FrameLayout {
+public class BubbleLikeAView extends FrameLayout {
 
     /**
      * 预存的泡泡数
@@ -95,7 +95,7 @@ public class BubbleLikeView extends FrameLayout {
     /**
      * 点赞冒泡控件
      */
-    public BubbleLikeView(Context context) {
+    public BubbleLikeAView(Context context) {
         super(context);
         initBubbles();
     }
@@ -103,7 +103,7 @@ public class BubbleLikeView extends FrameLayout {
     /**
      * 点赞冒泡控件
      */
-    public BubbleLikeView(Context context, AttributeSet attrs) {
+    public BubbleLikeAView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initBubbles();
     }
@@ -111,7 +111,7 @@ public class BubbleLikeView extends FrameLayout {
     /**
      * 点赞冒泡控件
      */
-    public BubbleLikeView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BubbleLikeAView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initBubbles();
     }

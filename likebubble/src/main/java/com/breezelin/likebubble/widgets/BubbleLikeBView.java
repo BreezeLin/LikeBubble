@@ -20,18 +20,18 @@ import java.util.LinkedList;
 import java.util.Random;
 
 /**
- * 尝试写的以view为基础的点赞效果
+ * 以view为基础的点赞冒泡控件
  */
-public class BubbleLikeView2 extends View {
+public class BubbleLikeBView extends View {
 
     /**
      * 泡泡总量
      */
-    private static final int MAX_BUBBLES = 100;
+    private static final int DEF_BUBBLE_AMOUNT = 200;
     /**
      * 泡泡飞行速度（像素/帧）
      */
-    private static final int FLASH_RANGE = 3;
+    private static final int DEF_FLASH_BREADTH = 3;
 
     /**
      * 画笔
@@ -54,32 +54,36 @@ public class BubbleLikeView2 extends View {
      */
     private Random random;
 
-    public BubbleLikeView2(Context context) {
+    public BubbleLikeBView(Context context) {
         super(context);
-        init();
+        init(null);
     }
 
-    public BubbleLikeView2(Context context, AttributeSet attrs) {
+    public BubbleLikeBView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(attrs);
     }
 
-    public BubbleLikeView2(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BubbleLikeBView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(attrs);
     }
 
     /**
      * 初始化
      */
-    private void init() {
+    private void init(AttributeSet attrs) {
+        if (attrs != null) {
+            attrs.getAttributeIntValue(R.styleable.BubbleLikeBView_bubbleAmount, DEF_BUBBLE_AMOUNT);
+        }
         random = new Random();
         restBubbles = new LinkedList<>();
         flyingBubbles = new LinkedList<>();
         removeBubbles = new LinkedList<>();
+        // TODO: 2016/7/13 泡泡比例设置
         Bitmap bubbleBitmap = BitmapFactory.decodeResource(getResources(),
                 R.mipmap.ic_like_bubble_1);
-        for (int i = 0; i < MAX_BUBBLES; i++) {
+        for (int i = 0; i < DEF_BUBBLE_AMOUNT; i++) {
             restBubbles.add(new Bubble(bubbleBitmap));
         }
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -123,13 +127,13 @@ public class BubbleLikeView2 extends View {
             // 泡泡属性更新
             // 左右方向随机
             if (random.nextBoolean()) {
-                bubble.setX(bubble.getX() + FLASH_RANGE);
+                bubble.setX(bubble.getX() + DEF_FLASH_BREADTH);
             } else {
-                bubble.setX(bubble.getX() - FLASH_RANGE);
+                bubble.setX(bubble.getX() - DEF_FLASH_BREADTH);
             }
             // 高度上升概率随机
             if (random.nextBoolean()) {
-                bubble.setY(bubble.getY() - FLASH_RANGE);
+                bubble.setY(bubble.getY() - DEF_FLASH_BREADTH);
             }
         }
         // 存在需要移除的泡泡

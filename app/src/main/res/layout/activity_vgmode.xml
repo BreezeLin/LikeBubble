@@ -39,7 +39,7 @@
             android:text="long" />
     </LinearLayout>
 
-    <com.breezelin.likebubble.widgets.BubbleLikeView
+    <com.breezelin.likebubble.widgets.BubbleLikeAView
         android:id="@+id/like_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -4,18 +4,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.breezelin.likebubble.widgets.BubbleLikeView2;
+import com.breezelin.likebubble.widgets.BubbleLikeBView;
 
 public class VModeActivity extends AppCompatActivity {
 
-    private BubbleLikeView2 likeView;
+    private BubbleLikeBView likeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vmode);
 
-        likeView = (BubbleLikeView2) findViewById(R.id.like_view);
+        likeView = (BubbleLikeBView) findViewById(R.id.like_view);
     }
 
     public void showBubble(View view) {
