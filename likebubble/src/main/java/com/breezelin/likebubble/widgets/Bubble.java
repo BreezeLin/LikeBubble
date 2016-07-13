@@ -7,6 +7,7 @@ package com.breezelin.likebubble.widgets;
  */
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 /**
  * 泡泡实体
@@ -14,88 +15,100 @@ import android.graphics.Bitmap;
 public class Bubble {
 
     /**
-     * 当前泡泡的图片
+     * 图片
      */
     private Bitmap bubbleBitmap;
     /**
-     * 泡泡的下一个坐标x
+     * 绘制矩阵，包含位置、倾斜和缩放等信息
+     */
+    private Matrix bubbleMatrix;
+    /**
+     * 坐标x
      */
     private int x;
     /**
-     * 泡泡的下一个坐标y
+     * 坐标y
      */
     private int y;
     /**
-     * 泡泡的下一个偏移值
+     * 透明度
      */
-    private int rotation;
-    /**
-     * 泡泡的x轴缩放
-     */
-    private int scaleX;
-    /**
-     * 泡泡的y轴缩放
-     */
-    private int scaleY;
+    private int alpha;
 
+    /**
+     * 点赞泡泡
+     *
+     * @param bubbleBitmap 泡泡的图片
+     */
     public Bubble(Bitmap bubbleBitmap) {
         this.bubbleBitmap = bubbleBitmap;
+        bubbleMatrix = new Matrix();
         reset();
     }
 
+    /**
+     * 泡泡属性重置
+     */
     public void reset() {
         x = 0;
         y = 0;
-        rotation = 0;
-        scaleX = 0;
-        scaleY = 0;
+        alpha = 255;
+        // 重置绘制矩阵属性
+        bubbleMatrix.setTranslate(0, 0);
+        bubbleMatrix.setScale(1, 1);
+        bubbleMatrix.setRotate(0);
     }
 
     public Bitmap getBubbleBitmap() {
         return bubbleBitmap;
     }
 
-    public void setBubbleBitmap(Bitmap bubbleBitmap) {
-        this.bubbleBitmap = bubbleBitmap;
-    }
-
+    /**
+     * @return 泡泡的横向坐标
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * @param x 泡泡的横向坐标
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * @return 泡泡的纵向坐标
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * @param y 泡泡的纵向坐标
+     */
     public void setY(int y) {
         this.y = y;
     }
 
-    public int getRotation() {
-        return rotation;
+    /**
+     * @return 泡泡的透明度
+     */
+    public int getAlpha() {
+        return alpha;
     }
 
-    public void setRotation(int rotation) {
-        this.rotation = rotation;
+    /**
+     * @param alpha 泡泡的透明度
+     */
+    public void setAlpha(int alpha) {
+        this.alpha = alpha;
     }
 
-    public int getScaleX() {
-        return scaleX;
-    }
-
-    public void setScaleX(int scaleX) {
-        this.scaleX = scaleX;
-    }
-
-    public int getScaleY() {
-        return scaleY;
-    }
-
-    public void setScaleY(int scaleY) {
-        this.scaleY = scaleY;
+    /**
+     * @return 泡泡的矩阵
+     */
+    public Matrix getBubbleMatrix() {
+        return bubbleMatrix;
     }
 }

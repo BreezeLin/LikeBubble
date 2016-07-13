@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,12 +11,14 @@
     tools:context="com.breezelin.livelikebtndemo.VModeActivity">
 
     <Button
-        android:onClick="showBubble"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="showBubble" />
 
     <com.breezelin.likebubble.widgets.BubbleLikeBView
         android:id="@+id/like_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:bubbleAmount="150"
+        app:moveBreadth="1dp" />
 </FrameLayout>
