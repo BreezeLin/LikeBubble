@@ -151,7 +151,8 @@ public class BubbleLikeBView extends View {
             // 取出矩阵
             Matrix bubbleMatrix = bubble.getBubbleMatrix();
             // 进行泡泡的绘制
-            canvas.drawBitmap(bubble.getBubbleBitmap(), bubble.getX(), bubble.getY(), paint);
+            Bitmap bubbleBitmap = bubble.getBubbleBitmap();
+            canvas.drawBitmap(bubbleBitmap, bubbleMatrix, paint);
             // 重置画笔
             paint.reset();
 
@@ -167,12 +168,13 @@ public class BubbleLikeBView extends View {
                 bubble.setX(bubble.getX() - moveBreadth);
             }
             // 位置
-//            bubbleMatrix.postTranslate(bubble.getX(), bubble.getY());
+            bubbleMatrix.postTranslate(bubble.getX() / bubbleBitmap.getWidth(),
+                    bubble.getY() / bubbleBitmap.getHeight());
             // 倾斜
-//            bubbleMatrix.postRotate(bubble.getX());
+            bubbleMatrix.postRotate(bubble.getX());
             // 缩放
-//            float scale = 2 - Math.abs((float) bubble.getY() / (float) getHeight());
-//            bubbleMatrix.postScale(scale, scale);
+            float scale = 2 - Math.abs((float) bubble.getY() / (float) getHeight());
+            bubbleMatrix.postScale(scale, scale);
             // 透明度
             bubble.setAlpha((int) (255 * Math.abs((float) bubble.getY() / (float) getHeight())));
         }
