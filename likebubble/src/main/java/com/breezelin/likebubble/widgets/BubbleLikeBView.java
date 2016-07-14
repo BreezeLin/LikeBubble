@@ -120,6 +120,7 @@ public class BubbleLikeBView extends View {
             bubble.setX(getWidth() / 2);
             bubble.getBubbleMatrix().setTranslate(bubble.getX(), bubble.getY());
             bubble.setAlpha(255);
+            // 泡泡转移
             restBubbles.remove(bubble);
             flyingBubbles.add(bubble);
             // 请求刷新view
@@ -152,7 +153,9 @@ public class BubbleLikeBView extends View {
             Matrix bubbleMatrix = bubble.getBubbleMatrix();
             // 进行泡泡的绘制
             Bitmap bubbleBitmap = bubble.getBubbleBitmap();
+            // TODO: 2016/7/14 当前矩阵对于泡泡的绘制并不成功，可以使用下边被注释的一句进行暂时的显示。
             canvas.drawBitmap(bubbleBitmap, bubbleMatrix, paint);
+//            canvas.drawBitmap(bubbleBitmap, bubble.getX(), bubble.getY(), paint);
             // 重置画笔
             paint.reset();
 
