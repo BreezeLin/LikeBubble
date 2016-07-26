@@ -189,11 +189,13 @@ public class BubbleLikeBView extends View implements Runnable {
 		bubble.setY(bubble.getY() - moveBreadth);
 		// TODO: 2016/7/18 X轴的位置应当根据贝塞尔曲线的公式生成
 		// 左右方向随机
-		if (random.nextBoolean()) {
-			bubble.setX(bubble.getX() + 2 * moveBreadth);
-		} else {
-			bubble.setX(bubble.getX() - 2 * moveBreadth);
-		}
+        for (int i = 0; i < 2; i++) {
+            if (random.nextBoolean()) {
+                bubble.setX(bubble.getX() + 2 * moveBreadth);
+            } else {
+                bubble.setX(bubble.getX() - 2 * moveBreadth);
+            }
+        }
 		Matrix bubbleMatrix = bubble.getBubbleMatrix();
 		Bitmap bubbleBitmap = bubble.getBubbleBitmap();
 		// 位置
@@ -206,11 +208,6 @@ public class BubbleLikeBView extends View implements Runnable {
 		bubbleMatrix.postScale(scale, scale);
 		// 透明度，根据高度而计算
 		bubble.setAlpha((int) (255 * Math.abs((float) bubble.getY() / (float) getHeight())));
-	}
-
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 
 	@Override
